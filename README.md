@@ -53,7 +53,7 @@ While we strive to provide a smooth experience with the Crypto Chart app, there 
 Issue: External API CoinGecko may have rate limits that could affect data fetching.
 ![CoinGecko API Rate Limits](https://i.imgur.com/e0Osvz5.png)
 
-Solution: Check the rate limits of the APIs you are using and consider implementing rate-limiting logic in your app to avoid hitting those limits.
+Solution: Wait 5 minutes until CoinGecko API gets unblocked and is available again or check the rate limits of the APIs you are using and consider implementing rate-limiting logic in your app to avoid hitting those limits.
 
 ### Invalid SearchBar Input
 Issue: The app will not proceed to CoinPage and renders blank if a non-existent cryptocurrency coin name is entered.
