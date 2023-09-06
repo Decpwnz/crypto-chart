@@ -8,8 +8,9 @@ import DropdownMenu from './DropdownMenu';
 import SearchBar from './SearchBar';
 import SearchButton from './SearchButton';
 import coinsController from '../controllers/coinsController';
-import DB_URL from '../shared/config/constants';
 import useNavigate from '../shared/router/useNavigate';
+
+const DB_URL = import.meta.env.VITE_DB_URL;
 
 function ButtonContainer() {
   const [coins, setCoins] = useState([]);

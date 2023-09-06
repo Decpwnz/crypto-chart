@@ -15,10 +15,10 @@ import axios from 'axios';
 
 import { CryptoState } from '../contexts/CryptoContext';
 import coinsController from '../controllers/coinsController';
-import DB_URL from '../shared/config/constants';
 import useNavigate from '../shared/router/useNavigate';
 import numberWithCommas from '../utils/numberWithCommas';
 
+const DB_URL = import.meta.env.VITE_DB_URL;
 const tableHead = ['Coin', 'Price', '24h Change', 'Market Cap'];
 
 function CoinsTable() {
