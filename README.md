@@ -1,4 +1,4 @@
-# Live Demo
+### Live Demo
 http://ec2-13-51-171-157.eu-north-1.compute.amazonaws.com:8080/
 
 # Crypto Chart Documentation
