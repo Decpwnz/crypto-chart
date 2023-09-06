@@ -15,7 +15,7 @@ app.use(cors());
 app.use('/cryptodb', logRouter);
 
 mongoose
-  .connect(process.env.CLOUD_DB_CONNECTION_STRING || process.env.LOCAL_DB_CONNECTION_STRING)
+  .connect(process.env.CLOUD_DB_CONNECTION_STRING)
   .then(() => {
     console.log('Connected to MongoDB');
     seedDatabase(); 
