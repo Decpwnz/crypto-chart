@@ -5,8 +5,9 @@ import { Autocomplete, TextField } from '@mui/material';
 import axios from 'axios';
 
 import coinsController from '../controllers/coinsController';
-import DB_URL from '../shared/config/constants';
 import useNavigate from '../shared/router/useNavigate';
+
+const DB_URL = import.meta.env.VITE_DB_URL;
 
 function DropdownMenu() {
   const [coin, setCoin] = useState([]);
