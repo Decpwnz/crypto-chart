@@ -1,6 +1,5 @@
 ## AWS Deployed Demo
-Frontend: http://ec2-13-51-171-157.eu-north-1.compute.amazonaws.com:8080/
-Database: http://ec2-16-171-60-20.eu-north-1.compute.amazonaws.com:3001/cryptodb
+http://ec2-13-51-171-157.eu-north-1.compute.amazonaws.com:8080/
 
 # Crypto Chart Documentation
 Welcome to the documentation for the Crypto Chart app. This app allows you to track cryptocurrency prices with the possibility of selecting date range and staying updated on the latest market trends. 
