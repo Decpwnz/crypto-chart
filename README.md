@@ -1,5 +1,5 @@
 ### Live Demo
-http://ec2-16-16-233-134.eu-north-1.compute.amazonaws.com:8080/
+http://ec2-16-16-80-1.eu-north-1.compute.amazonaws.com:8080/
 
 # Crypto Chart Documentation
 Welcome to the documentation for the Crypto Chart app. This app allows you to track cryptocurrency prices with the possibility of selecting date range and staying updated on the latest market trends. 
