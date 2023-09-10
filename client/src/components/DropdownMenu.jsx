@@ -1,18 +1,18 @@
 /* eslint-disable no-console */
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Autocomplete, TextField } from '@mui/material';
 import axios from 'axios';
 
-import coinsController from '../controllers/coinsController';
+import { CryptoState } from '../contexts/CryptoContext';
 import useNavigate from '../shared/router/useNavigate';
 
 const DB_URL = import.meta.env.VITE_DB_URL;
 
 function DropdownMenu() {
-  const [coin, setCoin] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
+  const { coins } = CryptoState();
   const { goTo } = useNavigate();
 
   const handleOptionSelected = (event, option) => {
@@ -32,26 +32,17 @@ function DropdownMenu() {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await coinsController.getCoinList();
-      setCoin(response);
-    };
-    fetchData();
-  }, []);
-
   return (
     <Autocomplete
       autoHighlight
       id="saturday-check"
-      options={coin}
+      options={coins}
       getOptionLabel={(option) => option.name}
       noOptionsText="No Results Found"
       onChange={(e, value) => handleOptionSelected(e, value)}
       renderInput={(params) => (
         <TextField
           {...params}
-          onChange={handleOptionSelected}
           label="Select Coin"
           value={inputValue}
           inputProps={{

@@ -15,7 +15,7 @@ function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" color="inherit">
         <Toolbar className="navbar-toolbar">
-          <div style={{ width: '250px', cursor: 'pointer' }}>
+          <div className="navbar-div-title">
             <Typography
               onClick={handleTypographyClick}
               variant="h6"

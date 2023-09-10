@@ -17,81 +17,68 @@ function CoinPage() {
   const { id } = useParams();
   const { currency, symbol } = CryptoState();
 
-  const fetchSingleCoin = async () => {
-    const response = await coinsController.getSingleCoin(id)
-      .then((data) => setCoin(data));
-    return response;
-  };
-
   useEffect(() => {
+    const fetchSingleCoin = async () => {
+      const response = await coinsController.getSingleCoin(id);
+      setCoin(response);
+      return response;
+    };
     fetchSingleCoin();
   }, []);
 
-  if (!coin) return <LinearProgress style={{ backgroundColor: 'gold' }} />;
+  if (!coin) return <LinearProgress />;
 
   return (
     <div className="coinpage">
       <NavBar />
-      <Container sx={{ marginTop: '30px' }}>
+      <Container className="container-grid">
         <Grid container spacing={2}>
           <Grid item xs={12} md={4}>
             <div>
               <img
+                className="coin-image"
                 src={coin?.image.large}
                 alt={coin?.name}
-                height="140"
-                style={{ marginBottom: 20 }}
               />
               <Typography variant="h4">
                 {coin?.name}
               </Typography>
               <div>
-                <span style={{ display: 'flex' }}>
+                <span className="span">
                   <Typography variant="h6">
                     Rank:
                   </Typography>
-                    &nbsp; &nbsp;
                   <Typography
+                    className="font"
                     variant="h6"
-                    style={{
-                      fontFamily: 'Montserrat',
-                    }}
                   >
                     {numberWithCommas(coin?.market_cap_rank)}
                   </Typography>
                 </span>
 
-                <span style={{ display: 'flex' }}>
+                <span className="span">
                   <Typography variant="h6">
                     Current Price:
                   </Typography>
-                    &nbsp; &nbsp;
                   <Typography
+                    className="font"
                     variant="h6"
-                    style={{
-                      fontFamily: 'Montserrat',
-                    }}
                   >
                     {symbol}
-                    {' '}
                     {numberWithCommas(
                       coin?.market_data.current_price[currency.toLowerCase()],
                     )}
                   </Typography>
                 </span>
-                <span style={{ display: 'flex' }}>
+                <span className="span">
                   <Typography variant="h6">
                     Market Cap:
                   </Typography>
-            &nbsp; &nbsp;
                   <Typography
+                    className="font"
                     variant="h6"
-                    style={{
-                      fontFamily: 'Montserrat',
-                    }}
                   >
                     {symbol}
-                    {' '}
                     {numberWithCommas(
                       coin?.market_data.market_cap[currency.toLowerCase()]
                         .toString()

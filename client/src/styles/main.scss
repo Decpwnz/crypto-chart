@@ -1,5 +1,6 @@
-@import 'navbar/navbar';
-@import 'coinpage/coinpage.scss';
+@import 'components/ButtonContainer';
+@import 'components/NavBar';
+@import 'pages/CoinPage.scss';
 
 .App {
   background-color: #EEF1FF;

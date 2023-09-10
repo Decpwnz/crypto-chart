@@ -7,33 +7,25 @@ import axios from 'axios';
 import DropdownMenu from './DropdownMenu';
 import SearchBar from './SearchBar';
 import SearchButton from './SearchButton';
-import coinsController from '../controllers/coinsController';
+import { CryptoState } from '../contexts/CryptoContext';
 import useNavigate from '../shared/router/useNavigate';
 
 const DB_URL = import.meta.env.VITE_DB_URL;
+const MAX_INPUT_LENGTH = 30;
 
 function ButtonContainer() {
-  const [coins, setCoins] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [error, setError] = useState(false);
 
+  const { coins } = CryptoState();
   const { goTo } = useNavigate();
 
-  const coinNames = coins.map((value) => value.name.toLowerCase());
-  const validName = coinNames.filter((value) => searchValue === value);
-
-  const fetchCoinList = async () => {
-    const response = await coinsController.getCoinList()
-      .then((data) => setCoins(data));
-    return response;
-  };
+  const validName = coins
+    .map((value) => value.name.toLowerCase())
+    .filter((value) => searchValue === value);
 
   useEffect(() => {
-    fetchCoinList();
-  }, []);
-
-  useEffect(() => {
-    if (searchValue.length >= 30) {
+    if (searchValue.length >= MAX_INPUT_LENGTH) {
       setError(true);
     } else {
       setError(false);
@@ -58,8 +50,8 @@ function ButtonContainer() {
   };
 
   return (
-    <Container maxWidth="lg" style={{ paddingTop: '20px' }}>
-      <div style={{ display: 'grid', placeItems: 'center' }}>
+    <Container maxWidth="lg" className="button-container">
+      <div className="button-container__inner">
         <Alert style={{ visibility: error ? 'visible' : 'hidden', width: '300px', marginBot: '5px' }} severity="error">Input is too long</Alert>
       </div>
       <Grid container spacing={2}>
