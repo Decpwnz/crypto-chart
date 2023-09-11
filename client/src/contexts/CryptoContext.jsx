@@ -4,13 +4,13 @@ import {
 
 import coinsController from '../controllers/coinsController';
 
-const Crypto = createContext();
+const CryptoContext = createContext();
 
 export function CryptoState() {
-  return useContext(Crypto);
+  return useContext(CryptoContext);
 }
 
-function CryptoContext({ children }) {
+function CryptoProvider({ children }) {
   const [coins, setCoins] = useState([]);
   const [currency, setCurrency] = useState('USD');
   const [symbol, setSymbol] = useState('$');
@@ -36,10 +36,10 @@ function CryptoContext({ children }) {
   }), [coins, currency, symbol]);
 
   return (
-    <Crypto.Provider value={contextValue}>
+    <CryptoContext.Provider value={contextValue}>
       {children}
-    </Crypto.Provider>
+    </CryptoContext.Provider>
   );
 }
 
-export default CryptoContext;
+export default CryptoProvider;
