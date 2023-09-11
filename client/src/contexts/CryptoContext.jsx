@@ -12,28 +12,30 @@ export function CryptoState() {
 
 function CryptoProvider({ children }) {
   const [coins, setCoins] = useState([]);
-  const [currency, setCurrency] = useState('USD');
   const [symbol, setSymbol] = useState('$');
+  const [loading, setLoading] = useState(true);
+
+  const currency = 'USD';
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await coinsController.getCoinList();
       setCoins(response);
+      setLoading(false);
     };
     fetchData();
   }, []);
 
   useEffect(() => {
     if (currency === 'USD') setSymbol('$');
-  }, [currency]);
+  }, []);
 
   const contextValue = useMemo(() => ({
     coins,
-    setCoins,
     currency,
-    setCurrency,
     symbol,
-  }), [coins, currency, symbol]);
+    loading,
+  }), [coins, currency, symbol, loading]);
 
   return (
     <CryptoContext.Provider value={contextValue}>
